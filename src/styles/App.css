@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+}
+
+.app {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.app h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1400px) {
+    .pokemon-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    .pokemon-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .pokemon-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.region-info {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.region-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.region-info p {
+    font-size: 1.1rem;
+    color: rgba(255, 215, 0, 0.8);
+}
+
+.hamburger-btn {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 237, 78, 0.8));
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    color: #1a1a2e;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 
+        0 4px 20px rgba(255, 215, 0, 0.4),
+        0 0 0 0 rgba(255, 215, 0, 0.7);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 997;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+
+.hamburger-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 
+        0 6px 30px rgba(255, 215, 0, 0.6),
+        0 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.hamburger-btn:active {
+    transform: scale(0.95) rotate(90deg);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 
+            0 4px 20px rgba(255, 215, 0, 0.4),
+            0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 
+            0 4px 20px rgba(255, 215, 0, 0.4),
+            0 0 0 12px rgba(255, 215, 0, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 1rem;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 215, 0, 0.2);
+    border-top-color: #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading p {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.loading-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 215, 0, 0.7);
+}
