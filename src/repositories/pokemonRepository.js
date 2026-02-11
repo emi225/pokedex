@@ -19,12 +19,27 @@ export class PokemonRepository {
     }
 
     async fetchRange(start, end) {
-        const requests = [];
-        
-        for (let i = start; i <= end; i++) {
-            requests.push(this.fetchById(i));
+        const batchSize = 20;  
+        const delay = 100;//ms   
+        const allResults = [];
+
+        for (let i = start; i <= end; i += batchSize) {
+            const batchEnd = Math.min(i + batchSize - 1, end);
+            const batchPromises = [];
+
+            for (let j = i; j <= batchEnd; j++) {
+                batchPromises.push(this.fetchById(j));
+            }
+
+            const batchResults = await Promise.allSettled(batchPromises);
+            allResults.push(...batchResults);
+
+            
+            if (batchEnd < end) {
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
         }
-        
-        return await Promise.allSettled(requests);
+
+        return allResults;
     }
 }
