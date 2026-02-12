@@ -5,7 +5,6 @@ export function PokemonModal({ pokemon, onClose }) {
     const audioRef = useRef(null);
 
     useEffect(() => {
-        // Prevent body scroll when modal is open
         document.body.style.overflow = 'hidden';
         return () => {
             document.body.style.overflow = 'unset';

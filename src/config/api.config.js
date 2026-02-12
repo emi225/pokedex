@@ -2,7 +2,6 @@ export const API_CONFIG = {
     BASE_URL: 'https://pokeapi.co/api/v2',
     ENDPOINTS: {
         POKEMON: '/pokemon',
-        SPECIES: '/pokemon-species'
     },
     GENERATIONS: {
         KANTO: { id: 1, name: 'Kanto', start: 1, end: 151 },
